@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | Task | Command |
 |------|---------|
 | Start dev server | `npm run dev` |
-| Build for production | `npm build` |
+| Build for production | `npm run build` |
 | Start production server | `npm start` |
 | Run all tests | `npm test` |
 | Run single test file | `npm test Navbar.test.tsx` |
@@ -105,10 +105,14 @@ Components follow a modular folder pattern:
 
 - **Global styles:** `globals.css` contains design tokens, typography rules, and generic layout classes
 - **Component styles:** Use CSS modules for complex layouts or Tailwind utilities for simple components
-- **CSS Modules:** Import and apply as `className={styles.className}` (see Navbar)
+- **CSS Modules:** Must include `@reference "../../app/globals.css"` at the top to access design tokens; apply as `className={styles.className}` (see Navbar)
 - **Tailwind utilities:** Use design token colors with `bg-primary`, `text-text`, etc.
 
 Class names follow the pattern `.siteNav`, `.page-content`, `.center-content` for reusable layout utilities.
+
+### Client vs Server Components
+
+Pages and components using React state, event handlers, or browser APIs must include the `"use client"` directive at the top of the file. Static/layout pages can remain server components (no directive needed).
 
 ## Testing
 
@@ -158,4 +162,13 @@ import "@/app/globals.css"
 4. Create `tests/components/[ComponentName].test.tsx`
 5. Import in pages/layouts as needed
 
-Use the Button component in `components/Button/` as a reference for styling patterns and design token usage.
+Use `components/Button/` as a reference for styling patterns and design token usage. Use `components/AuthForm/` as a reference for client components with form state, validation, and conditional rendering based on props.
+
+## Feature Workflow
+
+This project uses a spec-first workflow:
+
+- **`_specs/`** — Markdown feature specs written before implementation. Created via `/spec` command.
+- **`_plans/`** — Markdown implementation plans created during plan mode before coding begins.
+
+New features should have a spec and plan file before implementation starts. Both directories are committed to the repo.
