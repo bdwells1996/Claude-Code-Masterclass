@@ -1,7 +1,7 @@
 @reference "../../app/globals.css";
 
 .siteNav {
-  @apply bg-light px-2 py-4;
+  @apply bg-bg px-2 py-4;
 }
 
 .siteNav nav {
