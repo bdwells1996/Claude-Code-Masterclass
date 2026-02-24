@@ -3,24 +3,39 @@
 
 /* theme colours */
 @theme {
-  --color-primary: #C27AFF;
-  --color-secondary: #FB64B6;
-  --color-dark: #030712;
-  --color-light: #0A101D;
-  --color-lighter: #101828;
+  /* Brand */
+  --color-primary: #8B80F9;
+  --color-primary-dark: #302D79;
+  --color-secondary: #F06543;
+  --color-secondary-dark: #C04A2A;
+
+  /* Backgrounds */
+  --color-bg: #FEF7F2;
+  --color-bg-muted: #F5EDE6;
+
+  /* Text */
+  --color-text: #141616;
+  --color-text-accent: #302D79;
+  --color-text-muted: #6B6B6B;
+
+  /* Disabled State */
+  --color-disabled-bg: #E8E4DC;
+  --color-disabled-text: #9A9A9A;
+  --color-disabled-border: #D4CEC4;
+
+  /* Utility */
   --color-success: #05DF72;
   --color-error: #FF6467;
-  --color-heading: white;
-  --color-body: #99A1AF;
+
   --font-sans: 'Inter', sans-serif;
 }
 
 /* typography */
 body {
- @apply font-sans text-body bg-dark;
+ @apply font-sans text-text bg-bg;
 }
 h1, h2, h3, h4 {
-  @apply text-heading;
+  @apply text-text;
 }
 
 /* generic layout styles */
