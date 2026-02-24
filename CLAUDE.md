@@ -172,3 +172,7 @@ This project uses a spec-first workflow:
 - **`_plans/`** — Markdown implementation plans created during plan mode before coding begins.
 
 New features should have a spec and plan file before implementation starts. Both directories are committed to the repo.
+
+## MCP server usage
+
+Always use Context7 MCP when I need library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.
