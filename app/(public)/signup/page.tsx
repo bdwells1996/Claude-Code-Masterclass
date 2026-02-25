@@ -1,9 +1,11 @@
+'use client'
+
+import AuthForm from '@/components/AuthForm'
+
 export default function SignupPage() {
-  return (
-    <div className="center-content">
-      <div className="page-content">
-        <h2 className="form-title">Signup for an Account</h2>
-      </div>
-    </div>
-  )
+  function handleSubmit(data: { email: string; password: string }) {
+    console.log(data)
+  }
+
+  return <AuthForm type="signup" onSubmit={handleSubmit} />
 }
