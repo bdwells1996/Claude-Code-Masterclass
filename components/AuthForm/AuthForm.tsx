@@ -10,16 +10,23 @@ type AuthFormType = 'login' | 'signup'
 
 type AuthFormProps = {
   type: AuthFormType
-  onSubmit: (data: { email: string; password: string }) => void
+  onSubmit: (data: { email: string; password: string }) => Promise<void>
+  loading?: boolean
+  error?: string
 }
 
-export default function AuthForm({ type, onSubmit }: AuthFormProps) {
+export default function AuthForm({
+  type,
+  onSubmit,
+  loading = false,
+  error,
+}: AuthFormProps) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [passwordError, setPasswordError] = useState('')
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
     if (!email || !password) return
@@ -33,7 +40,7 @@ export default function AuthForm({ type, onSubmit }: AuthFormProps) {
     }
 
     setPasswordError('')
-    onSubmit({ email, password })
+    await onSubmit({ email, password })
   }
 
   const isLogin = type === 'login'
@@ -80,8 +87,14 @@ export default function AuthForm({ type, onSubmit }: AuthFormProps) {
               )}
             </div>
           )}
-          <Button type="submit" variant="primary" className="w-full mt-2">
-            {buttonText}
+          {error && <p className="text-sm text-error">{error}</p>}
+          <Button
+            type="submit"
+            variant="primary"
+            className="w-full mt-2"
+            disabled={loading}
+          >
+            {loading ? 'Loading...' : buttonText}
           </Button>
         </form>
         <p className="mt-4 text-center text-sm text-text-muted">
