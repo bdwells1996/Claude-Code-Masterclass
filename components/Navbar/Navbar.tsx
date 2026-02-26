@@ -32,7 +32,7 @@ export default function Navbar() {
           </h1>
           <div>Tiny missions. Big office mischief.</div>
         </header>
-        <ul>
+        <ul className="flex items-center gap-4">
           <li>
             <Link href="/heists/create"><Button variant="secondary" type="button" tabIndex={-1}>Create Heist</Button></Link>
           </li>

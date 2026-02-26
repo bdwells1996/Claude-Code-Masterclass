@@ -1,6 +1,7 @@
 'use client'
 
 import { useHeists } from '@/hooks/useHeists'
+import HeistCard from '@/components/HeistCard'
 
 export default function HeistsPage() {
   const { heists: activeHeists, loading: loadingActive } = useHeists('active')
@@ -14,11 +15,11 @@ export default function HeistsPage() {
         {loadingActive && <p>Loading...</p>}
         {!loadingActive && activeHeists.length === 0 && <p>No heists found.</p>}
         {!loadingActive && activeHeists.length > 0 && (
-          <ul>
+          <div className="flex flex-col gap-4">
             {activeHeists.map((heist) => (
-              <li key={heist.id}>{heist.title}</li>
+              <HeistCard key={heist.id} heist={heist} />
             ))}
-          </ul>
+          </div>
         )}
       </div>
       <div className="assigned-heists">
@@ -26,11 +27,11 @@ export default function HeistsPage() {
         {loadingAssigned && <p>Loading...</p>}
         {!loadingAssigned && assignedHeists.length === 0 && <p>No heists found.</p>}
         {!loadingAssigned && assignedHeists.length > 0 && (
-          <ul>
+          <div className="flex flex-col gap-4">
             {assignedHeists.map((heist) => (
-              <li key={heist.id}>{heist.title}</li>
+              <HeistCard key={heist.id} heist={heist} />
             ))}
-          </ul>
+          </div>
         )}
       </div>
       <div className="expired-heists">
@@ -38,11 +39,11 @@ export default function HeistsPage() {
         {loadingExpired && <p>Loading...</p>}
         {!loadingExpired && expiredHeists.length === 0 && <p>No heists found.</p>}
         {!loadingExpired && expiredHeists.length > 0 && (
-          <ul>
+          <div className="flex flex-col gap-4">
             {expiredHeists.map((heist) => (
-              <li key={heist.id}>{heist.title}</li>
+              <HeistCard key={heist.id} heist={heist} />
             ))}
-          </ul>
+          </div>
         )}
       </div>
     </div>
