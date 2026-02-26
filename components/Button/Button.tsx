@@ -35,7 +35,7 @@ export default function Button({
   const baseStyles = [
     'inline-flex items-center justify-center',
     'px-6 py-3 rounded-xl',
-    'font-semibold text-base tracking-wide',
+    'font-medium font-serif text-md tracking-wide',
     'transition-all duration-150 ease-in-out cursor-pointer',
   ].join(' ')
 
