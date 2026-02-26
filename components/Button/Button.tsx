@@ -7,6 +7,7 @@ type ButtonProps = {
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
   className?: string
+  tabIndex?: number
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
@@ -29,12 +30,13 @@ export default function Button({
   type = 'button',
   disabled = false,
   className = '',
+  tabIndex = 0,
 }: ButtonProps) {
   const baseStyles = [
     'inline-flex items-center justify-center',
     'px-6 py-3 rounded-xl',
-    'font-semibold text-base tracking-wide',
-    'transition-all duration-150 ease-in-out',
+    'font-medium font-serif text-md tracking-wide',
+    'transition-all duration-150 ease-in-out cursor-pointer',
   ].join(' ')
 
   const disabledStyles = [
@@ -53,6 +55,7 @@ export default function Button({
         disabled ? disabledStyles : variantStyles[variant],
         className,
       ].join(' ')}
+      tabIndex={tabIndex}
     >
       {children}
     </button>
